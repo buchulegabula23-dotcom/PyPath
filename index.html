@@ -125,10 +125,10 @@ Too low, try again.</span></pre>
 
 <section id="pricing">
   <h2>Try everything free for 7 days</h2>
-  <p class="lead">One plan with full access, priced in US dollars. Pick how you want to pay once your trial ends.</p>
+  <p class="lead">One plan with full access, priced in South African rand. Pick how you want to pay once your trial ends.</p>
   <div class="plans">
-    <div class="plan"><h3>Monthly</h3><div class="price">$19<small> / month</small></div><ul><li>All modules and projects</li><li>Project code reviews</li><li>Cancel any time</li></ul><button class="btn alt" data-open="monthly">Start free trial</button></div>
-    <div class="plan best"><h3>Annual<span class="tag">Save 35%</span></h3><div class="price">$149<small> / year</small></div><ul><li>Everything in Monthly</li><li>Downloadable lesson notes</li><li>Certificate of completion</li></ul><button class="btn" data-open="annual">Start free trial</button></div>
+    <div class="plan"><h3>Monthly</h3><div class="price">R349<small> / month</small></div><ul><li>All modules and projects</li><li>Project code reviews</li><li>Cancel any time</li></ul><button class="btn alt" data-open="monthly">Start free trial</button></div>
+    <div class="plan best"><h3>Annual<span class="tag">Save 35%</span></h3><div class="price">R2,699<small> / year</small></div><ul><li>Everything in Monthly</li><li>Downloadable lesson notes</li><li>Certificate of completion</li></ul><button class="btn" data-open="annual">Start free trial</button></div>
   </div>
 </section>
 
@@ -140,7 +140,7 @@ Too low, try again.</span></pre>
 </section>
 </div>
 
-<footer><div class="wrap">© PyPath. Demo content: replace copy, prices and instructor details with your own.</div></footer>
+<footer><div class="wrap">© PyPath. All rights reserved.</div></footer>
 
 <dialog id="dlg">
   <div class="fine" id="stepLbl" style="margin:0 0 6px"></div>
@@ -151,8 +151,8 @@ Too low, try again.</span></pre>
       <label for="e">Email</label><input id="e" type="email" autocomplete="email">
     </div>
     <div class="step" data-s="2">
-      <label class="opt"><input type="radio" name="pl" value="annual" checked>Annual, $149 per year<span class="tag">Save 35%</span></label>
-      <label class="opt"><input type="radio" name="pl" value="monthly">Monthly, $19 per month</label>
+      <label class="opt"><input type="radio" name="pl" value="annual" checked>Annual, R2,699 per year<span class="tag">Save 35%</span></label>
+      <label class="opt"><input type="radio" name="pl" value="monthly">Monthly, R349 per month</label>
     </div>
     <div class="step" data-s="3">
       <div class="sum" id="sum"></div>
@@ -165,14 +165,14 @@ Too low, try again.</span></pre>
 
 <script>
 (function(){
-var K='pypath_trial',DAY=864e5,PL={annual:'$149 per year',monthly:'$19 per month'};
+var K='pypath_trial',DAY=864e5,PL={annual:'R2,699 per year',monthly:'R349 per month'};
 var t=null;
 try{t=JSON.parse(localStorage.getItem(K))}catch(e){}
 function save(){try{t?localStorage.setItem(K,JSON.stringify(t)):localStorage.removeItem(K)}catch(e){}}
 var $=function(i){return document.getElementById(i)},dlg=$('dlg');
-var CONFIG={payLinks:{monthly:'',annual:''}}; // paste your Lemon Squeezy checkout links here to go live
+var CONFIG={payLinks:{monthly:'https://pypath.lemonsqueezy.com/checkout/buy/c31534dd-97fb-4bf6-a7fb-1d16a5a0c2fd?enabled=2144336',annual:'https://pypath.lemonsqueezy.com/checkout/buy/b511a932-1f12-4231-9751-4f9bc6bfcb65?enabled=2144317'}}; // paste your Lemon Squeezy checkout links here to go live
 var step=1,D={plan:'annual'};
-function money(p){return p==='annual'?'$149.00 per year':'$19.00 per month'}
+function money(p){return p==='annual'?'R2,699.00 per year':'R349.00 per month'}
 function show(){
   document.querySelectorAll('.step').forEach(function(x){x.hidden=+x.dataset.s!==step});
   $('stepLbl').textContent='Step '+step+' of 3';
@@ -182,7 +182,7 @@ function show(){
   $('err').textContent='';
   if(step===3){
     var end=new Date(Date.now()+7*DAY).toLocaleDateString(undefined,{month:'long',day:'numeric'});
-    $('sum').innerHTML='<div><span>Due today</span><b>$0.00</b></div><div><span>On '+end+'</span><b>'+money(D.plan)+'</b></div>';
+    $('sum').innerHTML='<div><span>Due today</span><b>R0.00</b></div><div><span>On '+end+'</span><b>'+money(D.plan)+'</b></div>';
     $('payNote').textContent=(CONFIG.payLinks[D.plan]?'You will enter your card on a secure Lemon Squeezy page. ':'Demo mode: no card is collected. ')+'Cancel before '+end+' and you pay nothing.';
   }
 }
